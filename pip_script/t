@@ -1,0 +1,22 @@
+[Mon Nov 02 13:03:19.276187 2015] [:error] [pid 10717:tid 140290056705792] {
+[Mon Nov 02 13:03:19.276295 2015] [:error] [pid 10717:tid 140290056705792]   "from": 0,  "size": 5,
+[Mon Nov 02 13:03:19.276347 2015] [:error] [pid 10717:tid 140290056705792]   "query": {
+[Mon Nov 02 13:03:19.276391 2015] [:error] [pid 10717:tid 140290056705792]     "filtered": {
+[Mon Nov 02 13:03:19.276432 2015] [:error] [pid 10717:tid 140290056705792]       "query": {
+[Mon Nov 02 13:03:19.276474 2015] [:error] [pid 10717:tid 140290056705792]         "query_string": {
+[Mon Nov 02 13:03:19.276515 2015] [:error] [pid 10717:tid 140290056705792]           "fields": ["name","taxonomy_list.category","address.zipcode"],
+[Mon Nov 02 13:03:19.276558 2015] [:error] [pid 10717:tid 140290056705792]           "query": "a*",
+[Mon Nov 02 13:03:19.276599 2015] [:error] [pid 10717:tid 140290056705792]           "default_operator":"AND",
+[Mon Nov 02 13:03:19.276640 2015] [:error] [pid 10717:tid 140290056705792]           "analyze_wildcard": true
+[Mon Nov 02 13:03:19.276676 2015] [:error] [pid 10717:tid 140290056705792]         }
+[Mon Nov 02 13:03:19.277484 2015] [:error] [pid 10717:tid 140290056705792]       },
+[Mon Nov 02 13:03:19.277536 2015] [:error] [pid 10717:tid 140290056705792]       "filter": {
+[Mon Nov 02 13:03:19.277565 2015] [:error] [pid 10717:tid 140290056705792]         "bool": {
+[Mon Nov 02 13:03:19.277592 2015] [:error] [pid 10717:tid 140290056705792]           "must": [{"query": {"match": {"is_active": "true"}}}],
+[Mon Nov 02 13:03:19.277619 2015] [:error] [pid 10717:tid 140290056705792]           "should": [{"geo_distance": {"distance": "20mi", "location": {"lat": 20.0, "lon": 77.0}}}, {"query": {"match": {"content_type": "products"}}}, {"query": {"match": {"content_type": "Movies"}}}]
+[Mon Nov 02 13:03:19.277648 2015] [:error] [pid 10717:tid 140290056705792]         }
+[Mon Nov 02 13:03:19.277674 2015] [:error] [pid 10717:tid 140290056705792]       }
+[Mon Nov 02 13:03:19.277699 2015] [:error] [pid 10717:tid 140290056705792]     }
+[Mon Nov 02 13:03:19.277745 2015] [:error] [pid 10717:tid 140290056705792]   },
+[Mon Nov 02 13:03:19.277772 2015] [:error] [pid 10717:tid 140290056705792]   "sort": [{"_geo_distance": {"location": {"lat": 20.0, "lon": 77.0}, "order": "asc"}}, {"_score": {"order": "desc"}}]
+[Mon Nov 02 13:03:19.277800 2015] [:error] [pid 10717:tid 140290056705792] }

@@ -1,0 +1,1 @@
+2 17 * * * /bin/bash /home/phaniv/nirbhay/scripts/qt_mail/qt_mail.sh

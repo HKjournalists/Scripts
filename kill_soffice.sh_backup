@@ -1,0 +1,21 @@
+s_pids=`netstat -nap | grep -i "SingleOfficeIP" | tr -s " " | cut -d" " -f9 | cut -d"/" -f1 | tr "\n" " "`
+ps -eo user,pid,etime,cmd | grep soffice.bin | grep -v "grep" > /tmp/temp_soffice.txt
+soffice_pids=`cat /tmp/temp_soffice.txt | tr -s " " | cut -d" " -f2 | tr "\n" " "`
+for id in $soffice_pids
+do
+  tmp=`echo "$s_pids" | grep -i "$id"`
+  if [ $? -ne 0 ] ; then
+       cnt=`cat /tmp/temp_soffice.txt | grep "$id" | tr -s " " | cut -d " " -f3 | grep -c ":"`
+       if [ $cnt -gt 1 ] ; then
+           echo "kill -9 $id"
+       elif [ $cnt -eq 1 ] ; then
+           mins=`cat /tmp/temp_soffice.txt | grep "$id" | tr -s " " | cut -d " " -f3 | cut -d":" -f1`
+           if [ $mins -gt 5 ] ;then
+              echo "kill -9 $id"
+           fi
+       fi
+       echo "\n\nJust output"
+       cat /tmp/temp_soffice.txt | grep "$id" 
+   fi
+   echo $tmp
+done
