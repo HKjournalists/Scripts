@@ -1,1 +1,170 @@
-mysql-connector-python
+## !! Could not determine repository location
+Babel==2.0
+## !! Could not determine repository location
+Django==1.6.5
+## !! Could not determine repository location
+MySQL-python==1.2.5
+PIL==1.1.7
+## !! Could not determine repository location
+Pillow==2.4.0
+## !! Could not determine repository location
+Pygments==1.6
+## !! Could not determine repository location
+South==0.8.4
+## !! Could not determine repository location
+amqp==1.4.6
+## !! Could not determine repository location
+anyjson==0.3.3
+argparse==1.2.1
+## !! Could not determine repository location
+astroid==1.1.1
+## !! Could not determine repository location
+backports.ssl-match-hostname==3.4.0.2
+## !! Could not determine repository location
+billiard==3.3.0.20
+## !! Could not determine repository location
+boto==2.38.0
+## !! Could not determine repository location
+brabeion==0.1
+## !! Could not determine repository location
+celery==3.1.18
+## !! Could not determine repository location
+certifi==2015.04.28
+## !! Could not determine repository location
+cffi==1.4.2
+contact-importer==0.0.1
+## !! Could not determine repository location
+cryptography==1.1.2
+## !! Could not determine repository location
+django-activity-stream==0.5.1
+## !! Could not determine repository location
+django-angular==0.7.2
+## !! Could not determine repository location
+django-appconf==1.0.1
+## !! Could not determine repository location
+django-cache-machine==0.9
+## !! Could not determine repository location
+django-cacheops==2.3.2
+## !! Could not determine repository location
+django-compressor==1.4
+django-contact-importer==0.0.1
+## !! Could not determine repository location
+django-crispy-forms==1.4.0
+## !! Could not determine repository location
+django-extensions==1.3.8
+## !! Could not determine repository location
+django-generic-ratings==0.7
+## !! Could not determine repository location
+django-guardian==1.2.0
+## !! Could not determine repository location
+django-jsonfield==0.9.13
+## !! Could not determine repository location
+django-mptt==0.6.0
+## !! Could not determine repository location
+django-oauth-access==0.1.dev22
+## !! Could not determine repository location
+django-redis==4.2.0
+## !! Could not determine repository location
+django-redis-cache==1.5.3
+## !! Could not determine repository location
+django-rest-swagger==0.1.14
+## !! Could not determine repository location
+django-simple-captcha==0.4.2
+## !! Could not determine repository location
+django-storages==1.1.8
+## !! Could not determine repository location
+django-userena==1.3.0
+## !! Could not determine repository location
+djangorestframework==2.3.13
+## !! Could not determine repository location
+easy-thumbnails==2.0.1
+## !! Could not determine repository location
+enum34==1.1.1
+## !! Could not determine repository location
+flower==0.8.2
+## !! Could not determine repository location
+funcy==1.5
+## !! Could not determine repository location
+futures==3.0.3
+## !! Could not determine repository location
+geoip2==2.2.0
+## !! Could not determine repository location
+geopy==1.7.1
+## !! Could not determine repository location
+hiredis==0.2.0
+## !! Could not determine repository location
+html2text==2014.4.5
+## !! Could not determine repository location
+idna==2.0
+## !! Could not determine repository location
+ipaddr==2.1.11
+## !! Could not determine repository location
+ipaddress==1.0.15
+## !! Could not determine repository location
+ipdb==0.8.1
+## !! Could not determine repository location
+ipython==3.2.1
+## !! Could not determine repository location
+kombu==3.0.26
+## !! Could not determine repository location
+logilab-common==0.61.0
+lxml==3.4.4
+## !! Could not determine repository location
+maxminddb==1.2.0
+## !! Could not determine repository location
+msgpack-python==0.4.6
+## !! Could not determine repository location
+mysql-connector-python==2.0.4
+## !! Could not determine repository location
+ndg-httpsclient==0.4.0
+## !! Could not determine repository location
+oauthlib==0.6.3
+## !! Could not determine repository location
+pep8==1.5.7
+## !! Could not determine repository location
+polib==1.0.4
+## !! Could not determine repository location
+pyOpenSSL==0.15.1
+## !! Could not determine repository location
+pyasn1==0.1.9
+## !! Could not determine repository location
+pycparser==2.14
+## !! Could not determine repository location
+pygeocoder==1.2.5
+## !! Could not determine repository location
+pygeoip==0.3.2
+## !! Could not determine repository location
+pylint==1.2.1
+## !! Could not determine repository location
+python-dateutil==2.2
+## !! Could not determine repository location
+python-magic==0.4.6
+## !! Could not determine repository location
+python-openid==2.2.5
+## !! Could not determine repository location
+python-social==0.1
+## !! Could not determine repository location
+python-social-auth==0.1.26
+## !! Could not determine repository location
+pytz==2014.10
+## !! Could not determine repository location
+redis==2.10.3
+## !! Could not determine repository location
+requests==2.7.0
+## !! Could not determine repository location
+requests-oauthlib==0.4.1
+## !! Could not determine repository location
+semantics3==0.3
+## !! Could not determine repository location
+semantria-sdk==3.0.70
+## !! Could not determine repository location
+six==1.7.2
+## !! Could not determine repository location
+sorl-thumbnail==11.12
+## !! Could not determine repository location
+telesign==1.0.4
+## !! Could not determine repository location
+tornado==4.2.1
+## !! Could not determine repository location
+urllib3==1.11
+wsgiref==0.1.2
