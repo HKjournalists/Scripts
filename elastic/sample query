@@ -1,0 +1,728 @@
+POST /professional_wr_primary/listing/_search
+{
+  "from": 0,  "size": 5,
+  "query": {
+    "filtered": {
+      "query": {
+        "query_string": {
+          "fields": ["name","taxonomy_list.category","address.zipcode",
+            "firstname"],
+          "query": "a*",
+          "default_operator":"OR",
+          "analyze_wildcard": true
+        }
+      },
+      "filter": {
+        "bool": {
+          "must": [{"query": {"match": {"content_type": "professionals"}}}, {"query": {"match": {"is_active": "true"}}}],
+          "should": [{"geo_distance": {"distance": "20mi", "location": {"lat": 34.068921, "lon": -118.4451811}}}, {"query": {"match": {"content_type": "products"}}}, {"query": {"match": {"content_type": "Movies"}}},{"query": {"match": {"content_type": "professionals"}}}]
+        }
+      }
+    }
+  },
+  "sort": [{"_score": {"order": "desc"}}, {"_geo_distance": {"location": {"lat": 34.068921, "lon": -118.4451811}, "order": "asc"}}]
+}
+
+
+GET /wr_primary/listing/17
+
+PUT /wr_primary/listing/17
+{
+      "is_claimed": true,
+      "movie_release_date": null,
+      "name": "Brown Mackie College-Birmingham",
+      "total_rating": {
+         "total_review": 0,
+         "avg_rating": [
+            "norating.png",
+            "No Rating"
+         ],
+         "rating_count": -1
+      },
+      "email_set": [],
+      "taxonomy_list": [],
+      "is_active": true,
+      "model_number": null,
+      "slug": "brown-mackie-college-birmingham-105-vulcan-road-suite-100-birmingham-alabama-35209-4701-usa",
+      "recommend_count": 0,
+      "location": {
+         "lat": 33.4679388,
+         "lon": -86.8285759
+      },
+      "content_type": "Business",
+      "address": [
+         {
+            "city": null,
+            "country": "USA",
+            "address2": null,
+            "zipcode": "",
+            "state": null,
+            "address1": "105 Vulcan Road, Suite 100, Birmingham, Alabama 35209-4701"
+         }
+      ],
+      "website_set": [
+         {
+            "website": "Brown Mackie College-Birmingham",
+            "website_type": null
+         }
+      ],
+      "phone_set": [],
+      "id": 17,
+      "listing_profileimage": [],
+      "manufacturer": null
+   }
+
+
+PUT /_snapshot/myback/snapshot_1?wait_for_completion=true
+
+GET _settings
+
+GET /wr_primary/listing/_search
+
+GET  /_snapshot/_all
+
+GET /_snapshot/myback/_status
+
+GET /_snapshot/myback/snapshot_1
+
+PUT /_snapshot/myback/
+{
+    "type": "fs",
+    "settings": {
+        "location": "/home/ubuntu/elastic_backup",
+        "compress": true
+    }
+}
+    
+
+
+GET /wr_primary,users/listing,user/_search
+{
+  "from": 0,  "size": 5,
+  "query": {
+    "filtered": {
+      "query": {
+        "query_string": {
+          "fields": "["name","taxonomy_list.category"]",
+          "query": "NIKE BOYS KD VII BHM (GS) BLACK HISTORY MONTH BLACK/WHITE-WOLF GREY SYNTHETIC SIZE 5Y BASKETBALL SHOE*",
+          "default_operator":"AND",
+          "analyze_wildcard": true
+        }
+      },
+      "filter": {
+        "bool": {
+          "must": [{"query": {"match": {"is_active": "true"}}}],
+          "should": [{"geo_distance": {"distance": "20mi", "location": {"lat": 34.068921, "lon": -118.4451811}}}, {"query": {"match": {"content_type": "products"}}}, {"query": {"match": {"content_type": "movies"}}}, {"query": {"match": {"content_type": "professional"}}}, {"query": {"match": {"content_type": "people"}}}]
+        }
+      }
+    }
+  },
+  "sort": [{"_score": {"order": "desc"}}, {"_geo_distance": {"location": {"lat": 34.068921, "lon": -118.4451811}, "order": "asc"}}]
+}
+
+
+
+
+
+
+get /listing/generic/_search
+
+GET /wr_primary/_mapping
+
+GET _cache/clear
+
+POST /wr_primary/listing/_search
+{
+  "from": 0,  "size": 5,
+  "query": {
+    "filtered": {
+      "query": {
+        "query_string": {
+          "fields": ["name","taxonomy_list.category","address.zipcode"],
+          "query": """NIKE BOYS KD VII BHM (GS) "BLACK HISTORY MONTH" BLACK/WHITE-WOLF GREY SYNTHETIC SIZE 5Y BASKETBALL SHOES""",
+          "default_operator":"AND",
+          "analyze_wildcard": true
+        }
+      },
+      "filter": {
+        "bool": {
+          "must": [{"query": {"match": {"is_active": "true"}}}],
+          "should": [{"geo_distance": {"distance": "20mi", "location": {"lat": 34.068921, "lon": -118.4451811}}}, {"query": {"match": {"content_type": "products"}}}, {"query": {"match": {"content_type": "movies"}}}, {"query": {"match": {"content_type": "professional"}}}, {"query": {"match": {"content_type": "people"}}}]
+        }
+      }
+    }
+  },
+  "sort": [{"_score": {"order": "desc"}}, {"_geo_distance": {"location": {"lat": 34.068921, "lon": -118.4451811}, "order": "asc"}}]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+GET /wr_primary/listing/_search
+{
+                
+                "filter": {
+                        "bool": {
+                           "must": [
+                                          {"exists": 
+                                                  {
+                                                     "field": "listing_profileimage.location"
+                                                  }
+                                           }
+                                      ]
+                               }
+                            }
+              }
+
+        
+
+
+
+
+
+
+GET /wr_primary/_mapping
+
+GET /wr_primary/listing/_search
+{
+    "filter": {
+        "bool": {
+            "must": [
+               {
+                   "exists": {
+                      "field": "listing_profileimage.category"
+                   }
+                  
+               }
+            ]
+        }
+    },
+    "sort": [
+       {
+          "id": {
+             "order": "asc"
+          }
+       }
+    ]
+}
+
+GET _cluster/health
+
+GET /wr_primary/listing/_search
+{
+  "from": 0,  "size": 10,
+  "query": {
+    "filtered": {
+      "query": {
+        "query_string": {
+          "fields": ["name","taxonomy_list.category","address.zipcode"],
+          "query": "mca*",
+          "default_operator":"OR",
+          "analyze_wildcard": true
+        }
+      },
+      "filter": {
+        "bool": {
+          "must": [{"query": {"match": {"content_type": "products"}}}, {"query": {"wildcard": {"manufacturer": {"value": "hon*da"}}}}],
+          "should": []
+        }
+      }
+    }
+  },
+  "sort": [{"name": {"order": "asc"}}, {"_geo_distance": {"location": {"lat": 34.068921, "lon": -118.4451811}, "order": "asc"}}, {"_score": {"order": "desc"}}]
+}
+
+GET /wr_primary/listing/_search
+{
+    "query": {
+        "match": {
+           "id": 17
+        }
+    }
+}
+
+GET /wr_primary/listing/_search                                                                                                                     
+{
+  "from": 0,  "size": 1000,
+  "query": {
+    "filtered": {
+      "query": {
+        "query_string": {
+          "fields": ["name","taxonomy_list.category","address.zipcode"],
+          "query": "COUNTRY*",
+          "default_operator":"AND",
+          "analyze_wildcard": true
+        }
+      },
+      "filter": {
+        "bool": {
+          "must": [{"query": {"match": {"content_type": "business"}}}],
+          "should": []
+        }
+      }
+    }
+  },
+  "sort": [{"name": {"order": "asc"}}, {"_geo_distance": {"location": {"lat": 29.7604267, "lon": -95.3698028}, "order": "asc"}}, {"_score": {"order": "desc"}}]
+}
+
+GET _cluster/health
+
+GET _cluster/health
+
+DELETE  /wr_primary/
+
+PUT  /wr_primary/
+{
+
+      "mappings": {
+         "listing": {
+            "properties": {
+               "address": {
+                  "properties": {
+                     "address1": {
+                        "type": "string"
+                     },
+                     "address2": {
+                        "type": "string"
+                     },
+                     "city": {
+                        "type": "string"
+                     },
+                     "country": {
+                        "type": "string"
+                     },
+                     "state": {
+                        "type": "string"
+                     },
+                     "zipcode": {
+                        "type": "string"
+                     }
+                  }
+               },
+               "content_type": {
+                  "type": "string"
+               },
+               "id": {
+                  "type": "long"
+               },
+               "is_active": {
+                  "type": "boolean"
+               },
+               "is_claimed": {
+                  "type": "boolean"
+               },
+               "location": {
+                  "type": "geo_point"
+               },
+               "manufacturer": {
+                  "type": "string"
+               },
+               "model_number": {
+                  "type": "string"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "slug": {
+                  "type": "string"
+               },
+               "taxonomy_list": {
+                  "properties": {
+                     "category": {
+                        "type": "string"
+                     },
+                     "id": {
+                        "type": "string"
+                     }
+                  }
+               },
+               "total_rating": {
+                  "properties": {
+                     "avg_rating": {
+                        "type": "string"
+                     }
+                  }
+               }
+            }
+         }
+      }
+ 
+}
+
+
+GET /wr_primary/listing/_search
+
+GET /wr_primary/listing/_search
+{
+    "query": {
+        "match": {
+           "content_type": "business"
+        }
+    }
+}
+PUT /wr_primary/
+{
+
+
+
+      "mappings": {
+         "listing": {
+            "properties": {
+               "address": {
+                  "properties": {
+                     "address1": {
+                        "type": "string"
+                     },
+                     "address2": {
+                        "type": "string"
+                     },
+                     "city": {
+                        "type": "string"
+                     },
+                     "country": {
+                        "type": "string"
+                     },
+                     "state": {
+                        "type": "string"
+                     },
+                     "zipcode": {
+                        "type": "string"
+                     }
+                  }
+               },
+               "content_type": {
+                  "type": "string"
+               },
+               "email_set": {
+                  "properties": {
+                     "email": {
+                        "type": "string"
+                     },
+                     "email_type": {
+                        "type": "string"
+                     },
+                     "id": {
+                        "type": "long"
+                     }
+                  }
+               },
+               "id": {
+                  "type": "long"
+               },
+               "is_active": {
+                  "type": "boolean"
+               },
+               "is_claimed": {
+                  "type": "boolean"
+               },
+               "listing_profileimage": {
+                  "properties": {
+                     "by_admin": {
+                        "type": "boolean"
+                     },
+                     "category": {
+                        "type": "string"
+                     },
+                     "file": {
+                        "type": "string"
+                     },
+                     "filename": {
+                        "type": "string"
+                     },
+                     "id": {
+                        "type": "string"
+                     },
+                     "location": {
+                        "type": "string"
+                     },
+                     "media_type": {
+                        "type": "string"
+                     },
+                     "thumbnail": {
+                        "type": "string"
+                     },
+                     "type": {
+                        "type": "string"
+                     },
+                     "url": {
+                        "type": "string"
+                     },
+                     "video_poster": {
+                        "type": "string"
+                     }
+                  }
+               },
+               "location": {
+                  "type": "geo_point"
+               },
+               "manufacturer": {
+                  "type": "string"
+               },
+               "model_number": {
+                  "type": "string"
+               },
+               "movie_release_date": {
+                  "type": "date",
+                  "format": "dateOptionalTime"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "phone_set": {
+                  "properties": {
+                     "id": {
+                        "type": "long"
+                     },
+                     "label": {
+                        "type": "string"
+                     },
+                     "phone": {
+                        "type": "string"
+                     },
+                     "primary_phone": {
+                        "type": "boolean"
+                     }
+                  }
+               },
+               "recommend_count": {
+                  "type": "long"
+               },
+               "slug": {
+                  "type": "string"
+               },
+               "taxonomy_list": {
+                  "properties": {
+                     "category": {
+                        "type": "string"
+                     },
+                     "id": {
+                        "type": "string"
+                     }
+                  }
+               },
+               "total_rating": {
+                  "properties": {
+                     "avg_rating": {
+                        "type": "string"
+                     },
+                     "rating_count": {
+                        "type": "long"
+                     },
+                     "total_review": {
+                        "type": "long"
+                     }
+                  }
+               },
+               "website_set": {
+                  "properties": {
+                     "id": {
+                        "type": "long"
+                     },
+                     "website": {
+                        "type": "string"
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+
+ 
+}
+
+
+
+
+GET /wr_primary/listing/_search
+{
+    "filter": {
+            "bool": {
+           "must_not": [
+              {"exists": {
+                 "field": "name"
+              }}
+           ]
+   
+   }
+    }
+}
+
+
+DELETE /wr_primary/listing/_search
+{
+    "query": {
+        "filtered": {
+           "query": {
+               "match_all": {}
+        },
+           "filter": {
+               "bool": {
+                   "must_not": [
+                      {"exists": {
+                          "field": "name"
+                      }}
+                   ]
+               }
+           }
+        }
+    }
+}
+
+GET /wr_primary/listing/_search
+{
+    "query": {
+        "match": {
+           "total_review": 5
+        }
+    }
+}
+
+
+}
+GET /listing/generic/_search 
+{
+    "filter": {
+        "bool": {
+            "must": [
+               {"query": {
+               "match": {
+                  "total_review": 0
+               }
+               }}
+            ]
+        }
+    }
+}
+
+
+
+
+GET /wr_index/listing/_search
+{
+"filter": {
+"bool": {
+    "must": [
+       {
+           "exists": {
+              "field": "listing_profileimage.url"
+           }
+       }
+    ]
+}
+}    
+
+}
+
+GET /wr_index/listing/_search
+
+DELETE /wr_index/
+
+PUT /wr_index/
+{
+
+      "mappings": {
+         "listing": {
+            "properties": {
+               "address": {
+                  "properties": {
+                     "address1": {
+                        "type": "string"
+                     },
+                     "address2": {
+                        "type": "string"
+                     },
+                     "city": {
+                        "type": "string"
+                     },
+                     "country": {
+                        "type": "string"
+                     },
+                     "state": {
+                        "type": "string"
+                     },
+                     "zipcode": {
+                        "type": "string"
+                     }
+                  }
+               },
+               "content_type": {
+                  "type": "string"
+               },
+               "id": {
+                  "type": "long"
+               },
+               "is_active": {
+                  "type": "boolean"
+               },
+               "is_claimed": {
+                  "type": "boolean"
+               },
+               "location": {
+                  "type": "geo_point"
+               },
+               "manufacturer": {
+                  "type": "string"
+               },
+               "model_number": {
+                  "type": "string"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "slug": {
+                  "type": "string"
+               },
+               "taxonomy_list": {
+                  "properties": {
+                     "category": {
+                        "type": "string"
+                     },
+                     "id": {
+                        "type": "string"
+                     }
+                  }
+               },
+               "total_rating": {
+                  "properties": {
+                     "avg_rating": {
+                        "type": "string"
+                     }
+                  }
+               }
+            }
+         }
+      }
+ 
+}
+
+
+GET /wr_primary/listing/_search
+{
+"query": {
+"match": {
+   "content_type": "business"
+}
+}    
+}
+
+
+
+POST /wr_index/listing/_search
+{
+    "query": {"match": {
+       "id": 175727
+    }}
+}
+
+
+
+
