@@ -1,0 +1,45 @@
+
+<filesMatch "\.(html|htm|js|css)$">
+  FileETag None
+  <ifModule mod_headers.c>
+     Header unset ETag
+     Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+     Header set Pragma "no-cache"
+     Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+  </ifModule>
+</filesMatch>
+<VirtualHost *:80>
+        WSGIPassAuthorization On
+ServerName wikistaging.leosys.net 
+#        ServerName beta.wikireviews.com
+        ServerAlias biz.wikireviews.com professionals.wikireviews.com
+        #DocumentRoot /var/www/wikireviews.com/wikireviews/
+        DocumentRoot /home/phaniv/IN_workplace/${WIKI_TAG_VER}
+        ErrorLog /var/log/apache2/error.log
+
+	CustomLog /var/log/apache2/access.log combined
+        Alias /static/ /home/phaniv/IN_workplace/${WIKI_TAG_VER}/static/
+
+        <Directory /home/phaniv/IN_workplace/${WIKI_TAG_VER}/static>
+          # Order deny,allow
+            Options -Indexes +FollowSymLinks +MultiViews
+          #  Allow from all
+        Require all granted
+        </Directory>
+
+        Alias /media/ /home/phaniv/IN_workplace/${WIKI_TAG_VER}/media/
+        <Directory /home/phaniv/IN_workplace/${WIKI_TAG_VER}/media>
+#           Order deny,allow
+            Options -Indexes +FollowSymLinks +MultiViews
+#            Allow from all
+        Require all granted
+        </Directory>
+
+        WSGIScriptAlias / /home/phaniv/IN_workplace/${WIKI_TAG_VER}/wiki/wsgi.py
+        <Directory /home/phaniv/IN_workplace/${WIKI_TAG_VER}>
+            Options -Indexes +FollowSymLinks +MultiViews
+#            Order deny,allow
+#            Allow from all
+            Require all granted
+        </Directory>
+</VirtualHost>
