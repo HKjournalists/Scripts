@@ -1,2 +1,2 @@
-source /home/phaniv/nirbhay/virtual_evn/ncaide/bin/activate
-alias wd="cd /home/phaniv/IN_workplace/NCAIDE/crevolution"
+source /home/ln/nirbhay/virtual_env/ncaied/bin/activate
+alias wd="cd /home/ln/IN_wrokplace/my_projects/NCAIED-"
