@@ -1,0 +1,53 @@
+from .models import otp_store
+
+
+def user_verification(phone_number=None, lang="en"):
+    key = ""
+    status = False
+    ex = None
+    for x in range(1, 6):
+        key += random.choice(string.digits)
+        # Instantiate a Verify object.
+    verify = Verify(TELESIGN_CUST_ID, TELESIGN_SECRET_KEY)
+    try:
+
+        try:
+            otp_store.objects.create(phone_no=phone_number, otp=key)
+        except:
+            otp_store.objects.filter(phone_no=phone_number).update(
+                otp=key, timestamp=datetime.now())
+        verify.call(phone_number, verify_code=key, language=lang)
+        status = True
+    except (AuthorizationError, TelesignError, Exception) as ex:
+        print ex
+    finally:
+        return status, ex
+
+
+def verify_phone(request, phone_num, lang="en"):
+    statusresult, ex = user_verification(phone_num, lang)
+    return HttpResponse(json.dumps({"results": [{"status": statusresult}]}))
+
+
+def verify_otp(request, phone_num, otp_code):
+    query_set = otp_store.objects.filter(phone_no=phone_num, otp=otp_code)
+    result = query_set.count()
+    if result > 0:
+        time_threshold = datetime.now() - timedelta(hours=1)
+        if query_set.filter(timestamp__gt=time_threshold).count() > 0:
+            status = True
+            msg = _("Verification completed successfully")
+        else:
+            msg = _("Provided Code has already expired")
+            status = False
+    else:
+        msg = _("Provided Code is incorrect")
+        status = False
+    return HttpResponse(json.dumps({"results": [{"status": status, "msg": str(msg)}]}))
+
+
+class otp_store(models.Model):
+    otp = models.CharField(max_length=6, null=False, blank=False)
+    phone_no = models.CharField(
+        max_length=15, null=False, blank=False, unique=True)
+    timestamp = models.DateTimeField(auto_now_add=True, null=True, blank=True)
